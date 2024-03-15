@@ -1,14 +1,20 @@
 body {
-    background-color: paleturquoise;
-}
-.h2 {
-    background-color: antiquewhite;
-    margin: 50px;
-    height: 50px;
-    display: inline-flex
-    ruby-text-container
+    background-color: rgb(9, 97, 97);
 }
 
+li{
+    border: 1px solid greenyellow;
+    padding: 10px;
+    list-style: none;
+    text-align: left;
+}
+h1{text-align: center;}
+
+input{
+    background-color: pink;
+    width: 100%;
+    border: none;
+}
 
 /* 
 
