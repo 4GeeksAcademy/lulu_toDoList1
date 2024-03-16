@@ -1,18 +1,24 @@
 body {
     background-color: rgb(9, 97, 97);
 }
-
-li{
-    border: 1px solid greenyellow;
-    padding: 10px;
-    list-style: none;
-    text-align: left;
+h1{
+    text-align: center;
 }
-h1{text-align: center;}
+li{
+    list-style: none;
+    font-display: flex;
+}
+i{
+ background-color: red;
+}
+ul{
+    font-size: large ;
+    font-style: oblique;
+}
 
 input{
     background-color: pink;
-    width: 100%;
+    width: 30%;
     border: none;
 }
 

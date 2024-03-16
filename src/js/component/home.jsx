@@ -1,54 +1,71 @@
 import React, { useState } from "react";
 
-//include images into your bundle
 
+function App(){
+	//hook---//
+const [newItem, setNewItem] = useState("");
+//-- array con toos los items//
+const[items, setItems] = useState ([]);
 
-//create your first component
-const Home = () => {
-	const [inputValue, setImputValue]= useState ("")
-	const [todos, setTodos] = useState([]);
+//-- funcion con alerta si no escriben//
+function addItem() {
+	if (!newItem){
+		alert("Enter a item.");
+		return;
+	}
 
+	//helper function//
+
+	const item = {
+		id: Math.floor(Math.random() * 100),
+		value: newItem
+};
+
+//
+setItems(oldList => [...oldList, item]); //old list mas el item nuevo//
+setNewItem(""); //new item back to empty string up on array
+}
+
+	function deleteItem(id){
+		const  newArray = items.filter(item =>item.id !== id);
+		setItems(newArray);
+		
+
+	}
 
 
 	return (
-		<div className="container text-center">
-			<h1>To do List</h1>
-			<ul>
-				
-				<li>
-					<input 
-			type="text"
-			onChange= {(e) => setImputValue (e.target.value)}
-			value= {inputValue}
-			onkeyPress= {(e) => {
-				if (e.onkeyPress ==="Enter"){
-					setTodos (todos.concat (inputValue));
-					setImputValue ("");
-				}
-			}}
-			placeholder="your morning routine..."></input>
-			 
-    </li>
-       {todos.map((item, index) => (
-		<li>
-			{item}{""}
-			<i 
-			class="fa-thin fa-trash"
-			onClick={() =>
-			setTodos (
-				todos.filter(
-					(item, currentIndex) => index != currentIndex
+		<div className="App text-center">
+
+			<h1> To do List</h1>
+
+		<input
+		type = "text"
+		placeholder="What to do..."
+		value={newItem}
+		onChange={e => setNewItem(e.target.value)}
+		/>
+
+		<button onClick={() => addItem ()}>Add</button>
+
+		<ul>
+
+			{items.map(item => {
+
+				return(
+					<li key={item.id}><strong>
+						{item.value}</strong>
+					<button onClick={() => deleteItem(item.id)}>
+						<i className="fa-solid fa-trash"></i></button>
+					
+					</li>
 				)
-			)
-			}></i>
+			})}
+		</ul>
+		<div> # of tasks.</div>
+		</div>
+	);
+}
 
-		</li>
-	   ))}
+export default App;
 
-	</ul>
-
-    <div>{todos.length} tasks</div>
-
-</div>)}
-
-export default Home;
